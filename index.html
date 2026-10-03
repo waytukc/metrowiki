@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="mode" content="public"><title>METROwiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c10;--pan:#12141a;--pan2:#101218;--line:#23262e;--ink:#e8eaee;--mut:#8b909c;--acc:#f6a623;--on:#14110a;--red:#e5534b;--ico:#5b606c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eeeae0;--pan:#fff;--pan2:#f7f4ec;--line:#d6d0bf;--ink:#1c1a14;--mut:#6a6455;--acc:#b8620a;--on:#fff;--ico:#9a9382}}
+:root[data-theme="light"]{--bg:#eeeae0;--pan:#fff;--pan2:#f7f4ec;--line:#d6d0bf;--ink:#1c1a14;--mut:#6a6455;--acc:#b8620a;--on:#fff;--ico:#9a9382}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.4 Rajdhani,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;font-size:26px;letter-spacing:.08em;cursor:pointer}.logo b{color:var(--acc)}
+.hb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--pan);font-weight:600}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--on);font-weight:700}.btn.d{color:var(--red);border-color:var(--red);background:transparent}
+.badge{border:1px solid var(--acc);color:var(--acc);border-radius:6px;padding:3px 10px;font-size:14px}
+main{max-width:1184px;margin:0 auto;padding:22px 16px 48px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.tab{min-height:60px;border-radius:10px;border:1px solid var(--line);background:var(--pan);color:var(--mut);font-weight:700;font-size:24px;letter-spacing:.06em}
+.tab.on{background:var(--acc);border-color:var(--acc);color:var(--on)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.chip{min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--pan);font-weight:600}
+.chip.on{border-color:var(--acc);color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.card{height:140px;background:var(--pan2);border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:8px;text-align:center}
+.card.it{cursor:pointer;border-color:var(--rc);box-shadow:inset 0 -3px 0 var(--rc)}.card.it:hover{background:var(--pan)}
+.card b{font-size:18px}.card small{color:var(--rc);font-weight:600}
+.ph i{display:block;height:7px;width:80px;border-radius:4px;background:var(--line)}.ph i+i{width:52px}
+.plus{border:2px dashed var(--acc);background:transparent;color:var(--acc);font-size:46px;gap:0}.plus span{font-size:14px;letter-spacing:.06em}
+.crumb{color:var(--mut);margin-bottom:14px}.crumb a{cursor:pointer}.crumb a:hover{color:var(--acc)}
+.two{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.box{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:22px}
+h1{margin:0 0 10px;font-size:38px}h2{margin:0 0 12px;font-size:26px}
+.top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.mut{color:var(--mut)}
+.img{width:124px;height:124px;border-radius:8px;background:var(--pan2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-top:10px}
+.desc{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;color:var(--mut);white-space:pre-wrap}
+.sec{margin-top:16px}.sec h3{margin:0 0 4px;font-size:18px;color:var(--acc)}
+.r{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.r span:last-child{font-family:'JetBrains Mono',monospace;font-size:14px;text-align:right}.neg{color:var(--red)}.pos{color:#5fcf6a}
+.step{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.step div{display:flex;gap:6px}
+.step button{width:44px;height:44px;border-radius:8px;border:1px solid var(--line);background:var(--pan2);font-size:20px}
+.step output{min-width:60px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-family:'JetBrains Mono',monospace;font-size:14px}
+.foot{display:flex;justify-content:center;gap:8px 28px;flex-wrap:wrap;padding:20px 16px;border-top:1px solid var(--line);color:var(--mut);font-size:15px}
+#modal{position:fixed;inset:0;background:#000b;display:none;overflow:auto;padding:20px;z-index:9}#modal.on{display:block}
+.form{max-width:760px;margin:0 auto;background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:22px}
+.form label{display:block;color:var(--mut);font-size:15px;margin:10px 0 3px}
+.form input,.form select,.form textarea{width:100%;min-height:40px;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:6px 10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.g7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.g7 input{padding:4px;text-align:center;font-size:13px;min-width:0}
+.cmp{width:100%;border-collapse:collapse}.cmp td,.cmp th{padding:8px;border-bottom:1px solid var(--line);text-align:left}.cmp td+td,.cmp th+th{font-family:'JetBrains Mono',monospace;font-size:14px}
+</style></head><body>
+<header><div class="logo" id="lg">БАЗА ЗНАНИЙ <b>METROCRAFT</b></div><div class="hb" id="hb"></div></header>
+<main id="app"></main><div id="modal" class=""></div>
+<footer class="foot"><span>© 2026 waytukc</span><span>Discord: @waytukc1337</span></footer>
+<script id="data" type="application/json">{"items":[{"id":"i1791048000050","cat":"armor","sub":"combat","name":"Жопа","rar":0,"desc":"хофта пидор","main":{"w":"23","ammo":"","mag":"","wound":""},"st":{"dmg":[null],"rof":[null],"rel":[null],"spr":[null],"hip":[null],"vr":[null],"hr":[null],"dist":[null],"fall":[null],"bul":[23],"exp":[23],"mut":[23],"rad":[23],"ble":[23],"carry":[23],"spd":[23]},"img":"data:image/webp;base64,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"},{"id":"i1791049407866","cat":"weapon","sub":"smg","name":"хофта лох","rar":6,"desc":"цербер говно так валет сказал","main":{"w":"1","ammo":"1","mag":"1","wound":"1"},"st":{"dmg":[1],"rof":[1],"rel":[1],"spr":[1],"hip":[1],"vr":[1],"hr":[1],"dist":[1],"fall":[1]},"img":"data:image/webp;base64,UklGRvIBAABXRUJQVlA4IOYBAABQDACdASo8ADwAPk0ejUQioaEYDAYAKATEsYBkwxB/M+rMmNz/4tbL7gVmyxF7fjmiIibzpN9sRtLFPfNyYqABpwisyr19HfqJn31dSiEZ4JmG0Fadbfi55v4OZmqVkgqUKKo5Cs6y3yssiAD+767FC077zZ3XEbQKrnh1/ABtRw4NnT+uqlbVOSUK5V/ORvhh+UuQY26bDm8EF/nPUaSkk2uCDWsPb5mSasdsHFlxa7KhuOeMHtzl/V3K1yrhkwgTfqItcowCyDSOLi5SZh1Ek1MRasDusosCMsOwp/OIF1d3/pncidU/Hdklbma7E/I6/kd1OYouD2s3UecMNV91oI6HwEWqaNoMI0BcutnCSoiG25xtFfv7dIuJGwFFAo4LFp6Z+vG0V3heufm9uIhwO9OguUZ5Ao+S1pMv4OHhKQxL4N1O/5qSWbCS0euWM6ALnaHPRAH407Z1jD2iM7y1V9JGa0LI092u+0UYz8zUAKOQ3prFGVUrBiuTbSJ22SxrI8qcSPUTUFFiGTOYhLrztefM3wucDc6wshoNUJasUWIWV61J3J9mHMRkwXD03ajxD8G4tEXC4xK9ZHU/4b0VLGGtWeOonhQsXIgDKdd8qWiTvp77DqzvtAB0mtKmXe4zYERAAAA="}]}</script>
+<script>
+const DATA=JSON.parse(document.getElementById('data').textContent);
+const PUB=document.querySelector('meta[name=mode]').content==='public';
+const LS='metrocraft-admin-data';
+if(!PUB){try{const t=localStorage.getItem(LS);if(t)DATA.items=JSON.parse(t).items||[]}catch(e){}}
+const RAR=[["I","#9aa0ac"],["II","#5fcf6a"],["III","#4aa3e0"],["IV","#b17ae8"],["V","#f6a623"],["VI","#e5534b"],["VII","#2ff0d0"]];
+const RM=["I","II","III","IV","V","VI","VII"];
+const SUBS={weapon:[["pistol","Пистолеты"],["smg","Автоматы"],["shotgun","Дробовики"],["rifle","Винтовки"],["lmg","Пулемёты"],["melee","Ближнее"]],armor:[["combat","Боевая"],["speed","Скоростная"]]};
+const W_=["w","Вес","кг"];
+const KIND={
+ranged:{main:[W_,["ammo","Тип боеприпасов",""],["mag","Объём магазина",""],["wound","Глубокие раны","%"]],st:[["dmg","Урон","ед",2],["rof","Скорострельность","выстр/мин",0],["rel","Перезарядка","с",2],["spr","Разброс","°",2],["hip","Разброс от бедра","°",2],["vr","Вертикальная отдача","°",2],["hr","Горизонтальная отдача","°",2],["dist","Максимальная дистанция","м",1],["fall","Падение урона","ед/м",2]]},
+melee:{main:[W_],st:[["dmg","Урон","ед",1],["spd","Скорость передвижения","%",1,1]]},
+armor:{main:[W_],st:[["bul","Пулестойкость","%",1],["exp","Защита от взрыва","%",1],["mut","Защита от мутантов","%",1],["rad","Радиозащита","%",1],["ble","Защита от кровотечения","%",1],["carry","Переносимый вес","кг",1,1],["spd","Скорость передвижения","%",1,1]]}};
+const kindOf=i=>i.cat=="armor"?"armor":i.sub=="melee"?"melee":"ranged";
+const ICO={ranged:'<path d="M2 3h40v10H22l-4 15H8l3-15H2z"/>',melee:'<path d="M6 30L34 4l6 5-26 24z"/>',armor:'<path d="M14 3L4 9l5 9v14h26V18l5-9-10-6-6 4z"/>'};
+const ic=(k,s=1)=>`<svg width="${48*s}" height="${34*s}" viewBox="0 0 48 34" fill="none" stroke="var(--ico)" stroke-width="2" stroke-linejoin="round">${ICO[k]}</svg>`;
+const pic=(i,h,sc)=>i.img?`<img src="${i.img}" alt="" style="max-width:100%;max-height:${h}px;object-fit:contain">`:ic(kindOf(i),sc||1);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=s=>document.querySelector(s);
+let EDIT=!PUB,dirty=false,cat="weapon",sub={weapon:"pistol",armor:"combat"},lv=0,sp=0,cmp=[];
+const fmt=(v,d,sg)=>v==null||v===''?'—':(sg&&v>0?'+':'')+Number(v).toFixed(d).replace('.',',');
+function sharp(it,k,v,n){if(v==null)return v;const c=it.cat=="armor";
+ if(c)return k=="bul"?v+.5*n:k=="spd"?v+.2*n:k=="carry"?v+.1*n:v;
+ if(it.sub=="melee")return v;
+ return k=="dmg"?v*(1+.01*n):k=="rof"?v*(1+.005*n):(k=="spr"||k=="hip"||k=="vr"||k=="hr")?v*(1-.01*n):v}
+const rows=(it,l,n)=>KIND[kindOf(it)].st.map(([k,lb,u,d,sg])=>{const v=sharp(it,k,(it.st[k]||[])[l],n);return [lb,fmt(v,d,sg)+(v==null?'':' '+u),sg&&v<0?'neg':sg&&v>0?'pos':'']});
+function route(){return location.hash.split('/')}
+function render(){
+ $('#hb').innerHTML=(EDIT?`<span class="badge">РЕЖИМ РЕДАКТОРА</span><button class="btn" id="sv">Сохранить изменения${dirty?' •':''}</button><button class="btn" id="ex">Экспорт данных</button><button class="btn" id="im">Импорт данных</button><button class="btn p" id="dl">Скачать сайт</button><input type="file" id="fi" accept=".json" hidden>`:'')+`<button class="btn" id="cm">Сравнение (${cmp.length}/2)</button>`;
+ $('#cm').onclick=()=>location.hash='#/cmp';
+ if(EDIT){$('#sv').onclick=save;$('#dl').onclick=down;$('#ex').onclick=()=>file('metrocraft-data.json',JSON.stringify(DATA),'application/json');$('#im').onclick=()=>$('#fi').click();$('#fi').onchange=imp}
+ const r=route();
+ if(r[1]=='i'&&DATA.items.find(i=>i.id==r[2]))page(DATA.items.find(i=>i.id==r[2]));else if(r[1]=='cmp')compare();else home();
+}
+function home(){
+ const list=DATA.items.filter(i=>i.cat==cat&&i.sub==sub[cat]);
+ let h=`<div class="tabs">${[["weapon","ОРУЖИЕ"],["armor","БРОНЯ"]].map(([k,t])=>`<button class="tab ${cat==k?'on':''}" data-c="${k}">${t}</button>`).join('')}</div>
+ <div class="chips">${SUBS[cat].map(([k,t])=>`<button class="chip ${sub[cat]==k?'on':''}" data-s="${k}">${t}</button>`).join('')}</div><div class="grid">`;
+ h+=list.map(i=>`<div class="card it" style="--rc:${RAR[i.rar][1]}" data-id="${i.id}">${pic(i,70)}<b>${esc(i.name)}</b><small>${RAR[i.rar][0]}</small></div>`).join('');
+ if(EDIT)h+=`<button class="card plus" id="add" aria-label="Добавить предмет">+<span>ДОБАВИТЬ</span></button>`;
+
+ $('#app').innerHTML=h+'</div>';
+ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{cat=b.dataset.c;render()});
+ document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{sub[cat]=b.dataset.s;render()});
+ document.querySelectorAll('.it').forEach(b=>b.onclick=()=>{lv=0;sp=0;location.hash='#/i/'+b.dataset.id});
+ if(EDIT)$('#add').onclick=()=>form(null);
+}
+function page(it){
+ const K=KIND[kindOf(it)],sn=SUBS[it.cat].find(s=>s[0]==it.sub)[1],cn=it.cat=="armor"?"Броня":"Оружие",inC=cmp.includes(it.id);
+ const R=rows(it,lv,sp),mods=sp>0&&kindOf(it)=="ranged"?["урона","скорострельности","разброса","отдачи"]:sp>0&&kindOf(it)=="armor"?["пулестойкости","скорости","веса"]:[];
+ $('#app').innerHTML=`<div class="crumb"><a href="#/" data-h="1">${cn}</a> › ${sn} › <b style="color:var(--ink)">${esc(it.name)}</b></div>
+ <div class="two"><section class="box"><div class="top"><div><h1>${esc(it.name)}</h1><div class="mut">Ранг: <b style="color:${RAR[it.rar][1]}">${RAR[it.rar][0]}</b></div><div class="mut">Класс: <b style="color:var(--ink)">${sn}</b></div></div>
+ <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px"><button class="btn" id="cb">${inC?'Убрать из сравнения':'Добавить в сравнение'}</button><div class="img">${pic(it,110,1.4)}</div></div></div>
+ <div class="desc">${esc(it.desc)||'[Описание предмета]'}</div>
+ <div class="sec"><h3>Основная информация</h3>${K.main.map(([k,l,u])=>it.main[k]?`<div class="r"><span class="mut">${l}</span><span>${esc(it.main[k])}${u?' '+u:''}</span></div>`:'').join('')}</div>
+ ${EDIT?`<div style="display:flex;gap:8px;margin-top:18px"><button class="btn p" id="ed">Редактировать</button><button class="btn d" id="del">Удалить</button></div>`:''}</section>
+ <aside class="box"><h2>Характеристики</h2>
+ ${kindOf(it)=="melee"?'':`<div class="step"><b>Заточка:</b><div><button id="sdn">−</button><output>+${sp}</output><button id="sup">+</button></div></div>`}
+ <div class="sec"><h3>Общие характеристики</h3>${R.map(([l,v,c])=>`<div class="r"><span class="mut">${l}</span><span class="${c}">${v}</span></div>`).join('')}</div>
+ ${mods.length?`<div class="sec"><h3>Установленные дополнения</h3>${mods.map(m=>`<div class="r"><span class="mut">Модификатор ${m}</span><span>${sp} уровня</span></div>`).join('')}</div>`:''}</aside></div>`;
+ $('#app a[data-h]').onclick=()=>{location.hash='#/'};
+ const go=()=>{lv=Math.max(0,Math.min(6,lv));sp=Math.max(0,Math.min(15,sp));page(it)};
+ 
+ if($('#sdn')){$('#sdn').onclick=()=>{sp--;go()};$('#sup').onclick=()=>{sp++;go()}}
+ $('#cb').onclick=()=>{cmp=inC?cmp.filter(x=>x!=it.id):[...cmp,it.id].slice(-2);render()};
+ if(EDIT){$('#ed').onclick=()=>form(it);$('#del').onclick=()=>{if(confirm('Удалить предмет?')){DATA.items=DATA.items.filter(x=>x!=it);cmp=cmp.filter(x=>x!=it.id);dirty=true;location.hash='#/';render()}}}
+}
+function compare(){
+ const its=cmp.map(id=>DATA.items.find(i=>i.id==id)).filter(Boolean);
+ if(its.length<2){$('#app').innerHTML=`<div class="box"><h2>Сравнение</h2><p class="mut">Откройте предмет и нажмите «Добавить в сравнение». Нужно выбрать два предмета (выбрано: ${its.length}).</p></div>`;return}
+ const labels=[...new Set(its.flatMap(i=>KIND[kindOf(i)].st.map(s=>s[1])))],T=its.map(i=>Object.fromEntries(rows(i,lv,sp).map(r=>[r[0],r[1]])));
+ $('#app').innerHTML=`<div class="box"><h2>Сравнение</h2>
+ <table class="cmp"><tr><th></th>${its.map(i=>`<th style="color:${RAR[i.rar][1]}">${esc(i.name)}</th>`).join('')}</tr>${labels.map(l=>`<tr><td class="mut">${l}</td>${T.map(t=>`<td>${t[l]||'—'}</td>`).join('')}</tr>`).join('')}</table></div>`;
+ 
+}
+function form(it){
+ const n=it?JSON.parse(JSON.stringify(it)):{id:'i'+Date.now(),cat,sub:sub[cat],name:'',rar:0,desc:'',main:{},st:{}};
+ const M=$('#modal');
+ const draw=()=>{const K=KIND[kindOf(n)];
+ M.innerHTML=`<div class="form"><h2>${it?'Редактирование':'Новый предмет'}</h2>
+ <div class="g2"><div><label>Название</label><input id="f-n" value="${esc(n.name)}"></div><div><label>Ранг</label><select id="f-r">${RAR.map((r,i)=>`<option value="${i}" ${n.rar==i?'selected':''}>${r[0]}</option>`).join('')}</select></div>
+ <div><label>Раздел</label><select id="f-c"><option value="weapon" ${n.cat=='weapon'?'selected':''}>Оружие</option><option value="armor" ${n.cat=='armor'?'selected':''}>Броня</option></select></div>
+ <div><label>Подкатегория</label><select id="f-s">${SUBS[n.cat].map(s=>`<option value="${s[0]}" ${n.sub==s[0]?'selected':''}>${s[1]}</option>`).join('')}</select></div></div>
+ <label>Картинка предмета (показывается в каталоге и на странице)</label><div style="display:flex;gap:10px;align-items:center"><input type="file" id="f-i" accept="image/*">${n.img?`<img src="${n.img}" alt="" style="height:48px;border-radius:6px"><button class="btn d" id="f-rm" type="button">Убрать</button>`:''}</div>
+ <label>Описание (предупреждения для брони пишите здесь)</label><textarea id="f-d" rows="3">${esc(n.desc)}</textarea>
+ <h3 style="color:var(--acc)">Основная информация</h3><div class="g2">${K.main.map(([k,l,u])=>`<div><label>${l}${u?', '+u:''}</label><input data-m="${k}" value="${esc(n.main[k]||'')}"></div>`).join('')}</div>
+ <h3 style="color:var(--acc)">Характеристики</h3>${K.st.map(([k,l,u])=>`<label>${l}, ${u}</label><input type="number" step="any" data-k="${k}" data-i="0" value="${(n.st[k]||[])[0]??''}">`).join('')}
+ <div style="display:flex;gap:8px;margin-top:20px"><button class="btn p" id="f-ok">Готово</button><button class="btn" id="f-x">Отмена</button></div></div>`;
+ $('#f-c').onchange=e=>{keep();n.cat=e.target.value;n.sub=SUBS[n.cat][0][0];draw()};$('#f-s').onchange=e=>{keep();n.sub=e.target.value;draw()};
+ $('#f-i').onchange=e=>{const f=e.target.files[0];if(!f)return;keep();pimg(f).then(u=>{n.img=u;draw()})};if($('#f-rm'))$('#f-rm').onclick=()=>{keep();n.img='';draw()};
+ $('#f-x').onclick=()=>M.classList.remove('on');
+ $('#f-ok').onclick=()=>{keep();if(!n.name.trim())return $('#f-n').focus();if(!it)DATA.items.push(n);else Object.assign(it,n);dirty=true;M.classList.remove('on');cat=n.cat;sub[cat]=n.sub;render()}};
+ const keep=()=>{n.name=$('#f-n').value;n.rar=+$('#f-r').value;n.desc=$('#f-d').value;
+  M.querySelectorAll('[data-m]').forEach(e=>n.main[e.dataset.m]=e.value);
+  M.querySelectorAll('[data-k]').forEach(e=>{(n.st[e.dataset.k]=n.st[e.dataset.k]||[])[+e.dataset.i]=e.value===''?null:+e.value})};
+ draw();M.classList.add('on');
+}
+function pimg(f){return new Promise(r=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const k=Math.min(1,400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);r(c.toDataURL('image/webp',.85))};im.src=u})}
+function build(pub){const c=document.documentElement.cloneNode(true);c.querySelector('#app').innerHTML='';c.querySelector('#modal').innerHTML='';c.querySelector('#modal').className='';c.querySelector('#hb').innerHTML='';
+ c.querySelector('#data').textContent=JSON.stringify(DATA).replace(/</g,'\\u003c');if(pub)c.querySelector('meta[name=mode]').setAttribute('content','public');return '<!doctype html>\n'+c.outerHTML}
+function file(name,txt,type){const u=URL.createObjectURL(new Blob([txt],{type}));const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function save(){try{localStorage.setItem(LS,JSON.stringify({items:DATA.items}));dirty=false;render()}catch(e){alert('Не удалось сохранить в браузере: '+e.message)}}
+function down(){save();file('metrocraft-wiki.html',build(true),'text/html')}
+function imp(e){const f=e.target.files[0];if(!f)return;f.text().then(t=>{const d=JSON.parse(t);if(!Array.isArray(d.items))throw 0;DATA.items=d.items;dirty=true;render()}).catch(()=>alert('Неверный файл данных'))}
+$('#lg').onclick=()=>{location.hash='#/'};
+addEventListener('hashchange',render);render();
+</script>
+</body></html>
